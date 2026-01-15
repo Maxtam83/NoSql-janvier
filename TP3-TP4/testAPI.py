@@ -6,7 +6,7 @@ load_dotenv()
 
 API_KEY = os.getenv("API_KEY")
 if API_KEY:
-    api = f"https://my.meteoblue.com/packages/current?lat=48.901020&lon=2.19&apikey={API_KEY}"
+    api = f"https://my.meteoblue.com/packages/current?lat=48.8808643&lon=2.3489429&apikey={API_KEY}"
 else:
     print("API_KEY introuvable dans le fichier .env. Veuillez le définir.")
     exit()
