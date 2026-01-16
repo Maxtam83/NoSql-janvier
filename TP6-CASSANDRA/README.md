@@ -56,5 +56,6 @@ SELECT * FROM velib_status WHERE bikes_available > 10;
 
 5) différences de fonctionnement entre Cassandra et une base relationnelle.
 
-*1. Pas de JOIN : On dénormalise les données. 
+*1. Pas de JOIN : On dénormalise les données.
+ 
 2. Schéma rigide : On ne peut requêter que sur les colonnes indexées ou les clés de partition (sauf utilisation de ALLOW FILTERING, mais c'est une mauvaise pratique).*
