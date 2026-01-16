@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Météo CRUD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="container py-4">
+    <h1 class="mb-4 text-center">Gestion des Données Météo (NoSQL)</h1>
+
+    <!-- Configuration -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-primary text-white">Configuration</div>
+        <div class="card-body">
+            <div class="row g-3 align-items-end">
+                <div class="col-md-10">
+                    <label for="collectionName" class="form-label">Nom de la Collection MongoDB</label>
+                    <input type="text" class="form-control" id="collectionName" value="current_weather_clean">
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary w-100" onclick="loadData()">Charger</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulaire Ajout/Edition -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-success text-white" id="formHeader">Ajouter une nouvelle entrée</div>
+        <div class="card-body">
+            <input type="hidden" id="editId">
+            <div class="mb-3">
+                <label for="jsonData" class="form-label">Données (Format JSON)</label>
+                <textarea class="form-control font-monospace" id="jsonData" rows="5" placeholder='{
+  "time": "2026-01-15 0",
+  "last_update": "2026-01-15 09:10",
+  "lat": 48.880863,
+  "lon": 2.348943,
+  "temperature": 9.200012,
+  "windspeed": 2.85,
+  "zenithangle": 80.62777
+}'></textarea>
+                <div class="form-text">Saisissez un objet JSON valide. L'API accepte n'importe quelle structure (schemaless).</div>
+            </div>
+            <button class="btn btn-success" id="btnSave" onclick="saveData()">Ajouter</button>
+            <button class="btn btn-secondary" onclick="resetForm()">Annuler / Reset</button>
+        </div>
+    </div>
+
+    <!-- Liste des données -->
+    <div class="card shadow-sm">
+        <div class="card-header">Données existantes</div>
+        <div class="card-body">
+            <div id="alertContainer"></div>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th style="width: 20%">ID</th>
+                            <th style="width: 60%">Contenu du Document</th>
+                            <th style="width: 20%">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dataTableBody">
+                        <!-- Les données seront insérées ici via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
